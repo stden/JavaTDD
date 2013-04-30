@@ -3,6 +3,9 @@ import org.junit.Test;
 
 public class RandomTest {
 
+    /**
+     * Первый тест - проверяем первую функцию генерации случайных чисел
+     */
     @Test
     public void randomWithoutParams() {
         int v1 = CheckRandom.genRandom1();
@@ -10,6 +13,9 @@ public class RandomTest {
         Assert.assertNotSame(v1, v2);
     }
 
+    /**
+     * Второй тест - проверяем вторую функцию генерации случайных чисел
+     */
     @Test
     public void randomWithoutParams2() {
         int v1 = CheckRandom.genRandom2();
