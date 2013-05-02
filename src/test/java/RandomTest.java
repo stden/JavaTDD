@@ -1,5 +1,6 @@
-import junit.framework.Assert;
 import org.junit.Test;
+
+import static junit.framework.Assert.assertNotSame;
 
 public class RandomTest {
 
@@ -10,7 +11,7 @@ public class RandomTest {
     public void randomWithoutParams() {
         int v1 = CheckRandom.genRandom1();
         int v2 = CheckRandom.genRandom1();
-        Assert.assertNotSame(v1, v2);
+        assertNotSame(v1, v2);
     }
 
     /**
@@ -20,7 +21,7 @@ public class RandomTest {
     public void randomWithoutParams2() {
         int v1 = CheckRandom.genRandom2();
         int v2 = CheckRandom.genRandom2();
-        Assert.assertNotSame(v1, v2);
+        assertNotSame(v1, v2);
     }
 
 }
