@@ -21,6 +21,7 @@ public class DumpTest {
         assertEquals("1", Dumper.toJSON(1));
         assertEquals("1.1", Dumper.toJSON(1.1));
         assertEquals("1.0E10", Dumper.toJSON(1e10));
+        assertEquals("\"c\"", Dumper.toJSON('c'));
     }
 
     @Test
@@ -34,10 +35,11 @@ public class DumpTest {
         assertEquals("RequestState.ERROR", Dumper.dump(RequestState.ERROR));
         assertEquals("true", Dumper.dump(true));
         assertEquals("false", Dumper.dump(false));
+        assertEquals("'c'", Dumper.dump('c'));
     }
 
     @Test
-    public void types() {
+    public void typeAndInit() {
         int x = 1;
         assertTrue(int.class.isPrimitive());
         assertFalse(Integer.class.isPrimitive());
@@ -57,12 +59,16 @@ public class DumpTest {
         assertEquals("float f = 1.1f;\n", Dumper.init("f", f));
         char c = 'a';
         assertEquals("char", Dumper.type(c));
+        assertEquals("char c = 'a';\n", Dumper.init("c", c));
         byte bb = 23;
         assertEquals("byte", Dumper.type(bb));
+        assertEquals("byte bb = 23;\n", Dumper.init("bb", bb));
         RequestTypeX requestTypeX = RequestTypeX.AD;
         assertEquals("RequestTypeX", Dumper.type(requestTypeX));
+        assertEquals("RequestTypeX requestTypeX = RequestTypeX.AD;\n", Dumper.init("requestTypeX", requestTypeX));
         Object obj = null;
         assertEquals("Object", Dumper.type(obj));
+        assertEquals("Object obj = null;\n", Dumper.init("obj", obj));
     }
 
     @Test

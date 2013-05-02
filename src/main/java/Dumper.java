@@ -12,16 +12,19 @@ public class Dumper {
     private static ObjectMapper mapper = new ObjectMapper();
     private static Map<Class, String> types = new HashMap<Class, String>();
 
+    /**
+     * Primitive Data Types
+     */
     static {
+        types.put(Byte.class, "byte");
+        types.put(Short.class, "short");
         types.put(Integer.class, "int");
         types.put(Long.class, "long");
         types.put(Float.class, "float");
+        types.put(Double.class, "double");
         types.put(Boolean.class, "boolean");
         types.put(Character.class, "char");
-        types.put(Byte.class, "byte");
         types.put(Void.class, "void");
-        types.put(Short.class, "short");
-        types.put(Double.class, "double");
     }
 
     /**
@@ -112,6 +115,8 @@ public class Dumper {
             return String.format("%s.%s", o.getClass().getSimpleName(), o);
         if (o instanceof Float)
             return o + "f";
+        if (o instanceof Character)
+            return String.format("'%s'", o);
         return o.toString();
     }
 
